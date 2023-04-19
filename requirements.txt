@@ -9,4 +9,7 @@ psycopg2
 python-dotenv~=1.0.0
 
 # EMAIL VALIDATION
-pydantic~=1.10.7
+pydantic[email]
+
+# HASHING
+passlib[bcrypt]
