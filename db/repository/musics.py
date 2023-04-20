@@ -13,5 +13,10 @@ def create_new_music(music: MusicCreate, db: Session, owner_id: int):
 
 
 def retreive_music(id: int, db: Session):
-    music = db.query(Music).filter(Music.id == id).first()
+    music = db.query(Music).filter(Music.is_active==True).all()
     return music
+
+
+def list_musics(db: Session):
+    musics = db.query(Music).all()
+    return musics

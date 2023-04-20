@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 from db.session import get_db
 from db.models.musics import Music
 from schemas.musics import MusicCreate, ShowMusic
-from db.repository.musics import create_new_music, retreive_music
+from db.repository.musics import create_new_music, retreive_music, list_musics
+from typing import List
 
 router = APIRouter()
 
@@ -23,3 +24,11 @@ def retreive_music_by_id(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
             detail=f"The music with the id {id} is not available")
     return music
+
+
+@router.get("/all", response_model=List[ShowMusic])
+def retreive_all_musics(db: Session = Depends(get_db)):
+    musics = list_musics(db=db)
+    return musics
+
+
