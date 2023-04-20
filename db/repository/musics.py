@@ -10,3 +10,8 @@ def create_new_music(music: MusicCreate, db: Session, owner_id: int):
     db.commit()
     db.refresh(music)
     return music
+
+
+def retreive_music(id: int, db: Session):
+    music = db.query(Music).filter(Music.id == id).first()
+    return music
