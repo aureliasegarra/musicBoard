@@ -8,6 +8,7 @@ class Music(Base):
     title = Column(String, nullable=False)
     artist = Column(String, nullable=False)
     album = Column(String, nullable=False)
+    cover = Column(String, nullable=False)
     release_date = Column(Date, nullable=False)
     is_favorite = Column(Boolean(), default=False)
     is_active = Column(Boolean(), default=True)

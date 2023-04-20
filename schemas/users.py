@@ -8,9 +8,7 @@ class UserCreate(BaseModel):
     password: str
 
 
-
-
-#The ShowUser class is used to return only the necessary user data to the client.
+# The ShowUser class is used to return only the necessary user data to the client.
 class ShowUser(BaseModel):
     username: str
     email: EmailStr
