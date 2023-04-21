@@ -19,3 +19,6 @@ python-jose
 
 # FORM DATA
 python-multipart
+
+# TEMPLATE
+jinja2
