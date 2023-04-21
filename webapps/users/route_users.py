@@ -25,7 +25,7 @@ async def register(request:Request,db:Session = Depends(get_db)):
         password = form.password)
         try:
             user = create_new_user(user=user, db=db)
-            return responses.RedirectResponse("/?msg=Succesfully-Registered", status_code=status.HTTP_302_FOUND)
+            return responses.RedirectResponse("/?msg=Successfully-Registered", status_code=status.HTTP_302_FOUND)
         except IntegrityError:
             form.__dict__.get("errors").append("Duplicate username or email")
             return templates.TemplateResponse("users/register.html",
