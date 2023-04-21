@@ -6,7 +6,25 @@
 
 {% block content %}
 <div class="container">
-      <h1 class="display-4 text-danger">Find Musics...</h1>
+      <h1 class="display-4 text-danger">Your Playlist ...</h1>
+
+    <div class="row">
+    {% for music in musics %}
+      <div class="col-lg-4 col-md-3 col-sm-10 mr-auto">
+        {% with obj=music %}
+          {% include "components/card.html" %}
+        {% endwith %}
+
+        {% if loop.index %3 %}
+      </div>
+        {% else %}
+          </div><br><div class="row">
+        {% endif %}
+    {% endfor %}
+    </div>
 </div>
+
+
+
 
 {% endblock %}}
