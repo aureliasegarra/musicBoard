@@ -22,3 +22,7 @@ python-multipart
 
 # TEMPLATE
 jinja2
+
+# STATIC FILES
+aiofiles
+
