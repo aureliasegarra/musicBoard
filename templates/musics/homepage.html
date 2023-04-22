@@ -6,11 +6,11 @@
 
 {% block content %}
 <div class="container">
-      <h1 class="display-4 text-danger">Your Playlist ...</h1>
+      <h1 class="display-3 text-dark text-center mt-5 mb-5">Your Playlist </h1>
 
-    <div class="row">
+    <div class="row mt-2">
     {% for music in musics %}
-      <div class="col-lg-4 col-md-3 col-sm-10 mr-auto">
+      <div class="col-lg-4 col-md-4 mr-auto mb-5">
         {% with obj=music %}
           {% include "components/card.html" %}
         {% endwith %}
