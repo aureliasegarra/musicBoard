@@ -13,7 +13,8 @@ router = APIRouter()
 
 
 @router.post("/create-music", response_model=ShowMusic)
-def create_music(music: MusicCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user_from_token)):
+def create_music(music: MusicCreate, db: Session = Depends(get_db),
+                 current_user: User = Depends(get_current_user_from_token)):
     owner_id = current_user.id
     music = create_new_music(music=music, db=db, owner_id=owner_id)
     return music
@@ -49,9 +50,9 @@ def delete_music(id: int, db: Session = Depends(get_db), current_user: User = De
     music = retreive_music(id=id, db=db)
     if not music:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail=f"The music with the id {id} is not available")
+                            detail=f"Music with id {id} does not exist")
     if music.owner_id == current_user.id or current_user.is_superuser:
         delete_music_by_id(id=id, db=db, owner_id=current_user.id)
-        return {"detail": "Music deleted successfully"}
+        return {"detail": "Music Successfully deleted"}
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-    detail="You are not permitted to perform this action")
+                        detail="You are not permitted!!")

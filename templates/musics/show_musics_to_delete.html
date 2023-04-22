@@ -1,0 +1,60 @@
+{% extends "shared/base.html" %}
+
+
+{% block title %}
+  <title>Delete Musics</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-5 text-center text-danger mb-3">Delete Musics</h1>
+    </div>
+    <div id="result" class="text-danger text-bold lead"></div>
+  </div>
+
+  <div class="row">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Album</th>
+            <th scope="col">Cover</th>
+            <th scope="col">Release_date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for music in musics %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{music.title}}</td>
+                <td>{{music.artist}}</td>
+                <td>{{music.album}}</td>
+                <td>{{music.cover[:40]}}</td>
+                <td>{{music.release_date}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="delete_music({{music.id}})">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function delete_music(id){
+        fetch('/music/delete/'+id,{
+            method:'DELETE',
+        })
+        .then(response => response.json())
+        .then(document.getElementById('result').innerHTML = "Refreshing")
+        .then(data => document.getElementById("result").innerHTML = data.detail);
+    }
+</script>
+{% endblock %}

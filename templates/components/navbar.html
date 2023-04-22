@@ -21,6 +21,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/register/">Register</a></li>
               <li><a class="dropdown-item" href="/login/">Login</a></li>
+              <li><a class="dropdown-item" href="/logout/">Logout</a></li>
               <li><hr class="dropdown-divider"></li>
             </ul>
           </li>
@@ -34,8 +35,9 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+        <form class="d-flex" action="/search/">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

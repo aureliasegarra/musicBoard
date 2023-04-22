@@ -43,3 +43,9 @@ def delete_music_by_id(id: int, db: Session, owner_id: int):
     existing_music.delete(synchronize_session=False)
     db.commit()
     return 1
+
+
+""" FUNCTION TO SEARCH MUSIC"""
+def search_music(query: str, db: Session):
+    musics = db.query(Music).filter(Music.title.contains(query))
+    return musics
